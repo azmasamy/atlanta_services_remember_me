@@ -1,7 +1,10 @@
-<?php $page = "dashboard";?>
-
-<?php require_once('../../../private/initialize.php'); ?>
-<?php require_once('../../../private/includes/user_header.php'); ?>
+<?php
+$page = "dashboard";
+require_once('../../../private/initialize.php');
+require_header($page);
+deny_user_access();
+deny_client_access();
+?>
 <div class="container">
   <a href="new.php">New Document</a>
   <table class="table">
@@ -18,7 +21,7 @@
       $documents = RequiredDocuments::find_all();
       foreach ($documents as $doc) {
         echo "<tr>";
-        
+
         echo "<td>".$doc->getName()."</td>";
         echo "<td>".$doc->getDescription()."</td>";
         echo "<td>"

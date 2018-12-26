@@ -2,7 +2,7 @@
 <?php
 $page = 'home';
 require_once('../private/initialize.php');
-require_header();
+require_header($page);
 
 ?>
 

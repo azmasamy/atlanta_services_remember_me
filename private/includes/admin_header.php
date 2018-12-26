@@ -51,12 +51,12 @@
         <div class="container">
           <div class="top_menu m0">
             <div class="float-left">
-              <h2>Super Admin Controler</h2>
+              <h2>Admin Controler</h2>
             </div>
             <div class="float-right">
-              <a class="dn_btn" href="#">Services</a>
-              <a class="dn_btn" href="#">Required Documents</a>
-              <a class="dn_btn" href="#">Requests</a>
+              <a class="dn_btn" href="<?php echo WWW_ROOT; ?>/admin/services">Services</a>
+              <a class="dn_btn" href="<?php echo WWW_ROOT; ?>/admin/required_documents">Required Documents</a>
+              <a class="dn_btn" href="<?php echo WWW_ROOT; ?>/admin/requests">Requests</a>
             </div>
           </div>
         </div>

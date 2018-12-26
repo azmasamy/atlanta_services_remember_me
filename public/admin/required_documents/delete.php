@@ -1,5 +1,10 @@
-<?php require_once('../../../private/initialize.php'); ?>
-<?php require_once('../../../private/includes/user_header.php'); ?>
+<?php
+$page = "dashboard";
+require_once('../../../private/initialize.php');
+require_header($page);
+deny_user_access();
+deny_client_access();
+?>
 <?php
 db_connect();
 $args['id'] = $_GET['id'];

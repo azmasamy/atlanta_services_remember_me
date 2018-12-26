@@ -1,5 +1,6 @@
-<?php $page = "out";?>
-<?php require_once('../private/initialize.php'); ?>
+<?php $page = "out"; 
+require_once('../private/initialize.php');
+?>
 
 
 <?php

@@ -47,22 +47,5 @@
             </div>
           </div>
         </nav>
-<<<<<<< HEAD
-        <div class="container">
-        <div class="top_menu m0">
-            <div class="float-left">
-              <h2>Super Admin Controler</h2>
-            </div>
-            <div class="float-right">
-              <a class="dn_btn" href="#">Services</a>
-              <a class="dn_btn" href="<?php echo WWW_ROOT; ?>/admin/required_documents/index.php">Required Documents</a>
-              <a class="dn_btn" href="#">Requests</a>
-              <a class="dn_btn" href="#">Staff</a>
-            </div>
-          </div>
-        </div>
-=======
-
->>>>>>> 218810d0547e486bb79b5e34ea0ed3dad3b765b2
       </div>
     </header>

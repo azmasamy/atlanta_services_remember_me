@@ -3,7 +3,10 @@
 <?php
 $page = 'dashboard';
 require_once('../../../private/initialize.php');
-require_once PRIVATE_PATH . '/includes/user_header.php';
+require_header($page);
+deny_user_access();
+deny_client_access();
+deny_admin_access();
 ?>
 
 

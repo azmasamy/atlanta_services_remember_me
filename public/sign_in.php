@@ -1,8 +1,9 @@
 <?php
 $page = 'in';
 require_once('../private/initialize.php');
+
 if(is_get_request()) {
-  require_once '../private/includes/user_header.php';
+  require_header($page);
 }
 ?>
 

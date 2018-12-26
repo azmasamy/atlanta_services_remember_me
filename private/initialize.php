@@ -16,14 +16,7 @@ require_once("functions.php");
 require_once("database_functions.php");
 require_once("models/Users.class.php");
 require_once("models/Session.class.php");
-//require_once("models/MenuItem.class.php");
-//require_once("models/Category.class.php");
-<<<<<<< HEAD
-require_once("functions.php");
 require_once("models/RequiredDocuments.class.php");
-//require_once("models/Session.class.php");
-=======
->>>>>>> 218810d0547e486bb79b5e34ea0ed3dad3b765b2
 
 $session = new Session();
 
@@ -31,12 +24,7 @@ $session = new Session();
 //redirect_to(WWW_ROOT.'/admin/login.php');
 
 $db = db_connect();
-<<<<<<< HEAD
 RequiredDocuments::set_database($db);
-=======
-//Category::set_database($db);
->>>>>>> 218810d0547e486bb79b5e34ea0ed3dad3b765b2
-//MenuItem::set_database($db);
 User::set_database($db);
 
 

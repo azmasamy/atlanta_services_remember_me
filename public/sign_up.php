@@ -41,7 +41,6 @@ require_once '../private/includes/user_header.php';
               echo "Welcom to our family <b>" . $user->getFullname() . "</b>";
               echo "<br>";
               echo "You can now make as many service requests as you want ;)";
-              die();
             }
             else {
               echo "There was an error, make sure that you enter your data correctly";

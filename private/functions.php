@@ -16,17 +16,17 @@ function redirect_to($location) {
   exit;
 }
 
-function require_header() {
+function require_header($page) {
   if(isset($_SESSION['user_id'])) {
     if($_SESSION['is_admin'] == 1) {
-      require_once '../private/includes/admin_header.php';
+      require_once PRIVATE_PATH . '/includes/admin_header.php';
     } else if ($_SESSION['is_super'] == 1) {
-      require_once '../private/includes/super_header.php';
+      require_once PRIVATE_PATH . '/includes/super_header.php';
     } else {
-      require_once '../private/includes/client_header.php';
+      require_once PRIVATE_PATH . '/includes/client_header.php';
     }
   } else {
-    require_once '../private/includes/user_header.php';
+    require_once PRIVATE_PATH . '/includes/user_header.php';
   }
 }
 
@@ -44,7 +44,7 @@ function deny_client_access() {
 
 function deny_admin_access() {
   if(isset($_SESSION['user_id']) && $_SESSION['is_admin'] == 1 && $_SESSION['is_super'] == 0) {
-    header("Location: " . 'index.php');
+    header("Location: " . PUBLIC_PATH . '/admin/index.php');
   }
 }
 
