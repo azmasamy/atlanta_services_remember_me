@@ -20,8 +20,7 @@ deny_client_access();
       <?php
       //Get all categories from database
       $documents = RequiredDocuments::find_all();
-      if(!empty($admins)) {
-
+      if(!empty($documents)) {
       foreach ($documents as $doc) {
         echo "<tr>";
 

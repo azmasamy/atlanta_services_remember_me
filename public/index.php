@@ -60,7 +60,7 @@ if(count($services) == 3){
               echo "</div>";
             }
           }
-        } 
+        }
       }
 
       ?>
