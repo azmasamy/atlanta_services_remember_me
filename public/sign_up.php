@@ -4,88 +4,97 @@ require_once('../private/initialize.php');
 require_once '../private/includes/user_header.php';
 ?>
 
-<!--================Contact Area =================-->
-<section class="contact_area p_120">
+<!--================Services Area =================-->
+<section class="services_area p_120">
   <div class="container">
-  <div class="row">
-    <div class="col-lg-3">
-      <div class="contact_info">
-        <div class="info_item">
-          <i class="lnr lnr-home"></i>
-          <h6>California, United States</h6>
-          <p>Santa monica bullevard</p>
-        </div>
-        <div class="info_item">
-          <i class="lnr lnr-phone-handset"></i>
-          <h6><a href="#">00 (440) 9865 562</a></h6>
-          <p>Mon to Fri 9am to 6 pm</p>
-        </div>
-        <div class="info_item">
-          <i class="lnr lnr-envelope"></i>
-          <h6><a href="#">support@colorlib.com</a></h6>
-          <p>Send us your query anytime!</p>
+    <div class="main_title">
+      <h2>Sign up</h2>
+
+      <?php
+      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        $first_name = $_POST['first_name'];
+        $last_name = $_POST['last_name'];
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $passwordCheck = $_POST['password_check'];
+
+        if(!has_presence($first_name) || !has_presence($last_name) || !has_presence($username) || !has_presence($email) || !has_presence($password) || !has_presence($passwordCheck)) {
+          echo "Not created, all fields are required";
+          echo "<br>";
+          echo "<br>";
+        } else {
+          if($password != $passwordCheck) {
+            echo "Not created, Passwords didn't match";
+            echo "<br>";
+            echo "<br>";
+          } else {
+            $args['first_name'] = $first_name;
+            $args['last_name'] = $last_name;
+            $args['username'] = $username;
+            $args['email'] = $email;
+            $args['password'] = User::hash_password($password);
+            $user = new User($args);
+
+            if($user->create_user()) {
+              echo "Welcom to our family <b>" . $user->getFullname() . "</b>";
+              echo "<br>";
+              echo "You can now make as many service requests as you want ;)";
+              die();
+            }
+            else {
+              echo "There was an error, make sure that you enter your data correctly";
+            }
+          }
+        }
+
+
+      }
+      ?>
+
+    </div>
+
+    <form class="row contact_form" action="sign_up.php" method="post">
+      <div class="col-md-6">
+        <div class="form-group">
+          <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter first name">
         </div>
       </div>
-    </div>
-    <div class="col-lg-9">
-      <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
-        <div class="col-md-6">
-          <div class="form-group">
-            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
-          </div>
-          <div class="form-group">
-            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address">
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter Subject">
-          </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter last name">
         </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <textarea class="form-control" name="message" id="message" rows="1" placeholder="Enter Message"></textarea>
-          </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address">
         </div>
-        <div class="col-md-12 text-right">
-          <button type="submit" value="submit" class="btn submit_btn">Send Message</button>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
         </div>
-      </form>
-    </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <input type="password" class="form-control" id="password_check" name="password_check" placeholder="Enter password again">
+        </div>
+      </div>
+      <div class="col-md-12 text-right">
+        <button type="submit" value="create" class="btn submit_btn">Sign up</button>
+      </div>
+    </form>
+
   </div>
-</div>
+
 </section>
-<!--================Contact Area =================-->
-
-<!--================Contact Success and Error message Area =================-->
-<div id="success" class="modal modal-message fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <i class="fa fa-close"></i>
-        </button>
-        <h2>Thank you</h2>
-        <p>Your message is successfully sent...</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modals error -->
-
-<div id="error" class="modal modal-message fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <i class="fa fa-close"></i>
-        </button>
-        <h2>Sorry !</h2>
-        <p> Something went wrong </p>
-      </div>
-    </div>
-  </div>
-</div>
-<!--================End Contact Success and Error message Area =================-->
+<!--================End Services Area =================-->
 
 
 <?php
