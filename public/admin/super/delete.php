@@ -1,6 +1,10 @@
-<?php $selected = "admins";?>
-<?php require_once('../../../private/initialize.php'); ?>
-<?php require_once(INCLUDES_PATH.'/admin_header.php'); ?>
+<?php
+$page = 'dashboard';
+require_once('../../../private/initialize.php');
+deny_user_access();
+deny_client_access();
+deny_admin_access();
+?>
 <?php
 db_connect();
 $args['id'] = $_GET['id'];

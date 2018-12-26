@@ -42,11 +42,24 @@
               <li class="<?php if($page == 'service') echo "nav-item active"; else echo "nav-item"; ?>"><a class="nav-link" href="<?php echo WWW_ROOT; ?>/service.php">Services</a>
                 <li class="<?php if($page == 'contact') echo "nav-item active"; else echo "nav-item"; ?>"><a class="nav-link" href="<?php echo WWW_ROOT; ?>/contact.php">Contact</a></li>
                 <li class="<?php if($page == 'profile') echo "nav-item active"; else echo "nav-item"; ?>"><a class="nav-link" href="<?php echo WWW_ROOT; ?>/profile/">Profile</a></li>
+                <li class="<?php if($page == 'dashboard') echo "nav-item active"; else echo "nav-item"; ?>"><a class="nav-link" href="<?php echo WWW_ROOT; ?>/admin">Dashboard</a></li>
                 <li class="<?php if($page == 'logout') echo "nav-item active"; else echo "nav-item"; ?>"><a class="nav-link" href="<?php echo WWW_ROOT; ?>/log_out.php">Log out</a></li>
               </ul>
             </div>
           </div>
         </nav>
-
+        <div class="container">
+          <div class="top_menu m0">
+            <div class="float-left">
+              <h2>Super Admin Controler</h2>
+            </div>
+            <div class="float-right">
+              <a class="dn_btn" href="<?php echo WWW_ROOT; ?>/admin/services">Services</a>
+              <a class="dn_btn" href="<?php echo WWW_ROOT; ?>/admin/required_documents">Required Documents</a>
+              <a class="dn_btn" href="<?php echo WWW_ROOT; ?>/admin/requests">Requests</a>
+              <a class="dn_btn" href="<?php echo WWW_ROOT; ?>/admin/super">Staff</a>
+            </div>
+          </div>
+        </div>
       </div>
     </header>

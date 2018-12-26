@@ -1,7 +1,11 @@
 
-<?php $selected = "meals";?>
-<?php require_once('../../../private/initialize.php'); ?>
-<?php require_once(INCLUDES_PATH.'/admin_header.php'); ?>
+<?php
+$page = "dashboard";
+require_once('../../../private/initialize.php');
+require_header($page);
+deny_user_access();
+deny_client_access();
+?>
 
 <div class="container">
   <?php

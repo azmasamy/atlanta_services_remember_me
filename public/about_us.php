@@ -2,7 +2,7 @@
 <?php
 $page = 'about';
 require_once('../private/initialize.php');
-require_once '../private/includes/user_header.php';
+require_header($page);
 ?>
 
 

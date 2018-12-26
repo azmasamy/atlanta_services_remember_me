@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="icon" href="<?php echo WWW_ROOT; ?>/img/favicon.png" type="image/png">
-  <title>Builder Construction Multi</title>
+  <title>Atlanta Services</title>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="<?php echo WWW_ROOT; ?>/css/bootstrap.css">
   <link rel="stylesheet" href="<?php echo WWW_ROOT; ?>/vendors/linericon/style.css">
@@ -43,24 +43,9 @@
                 <li class="<?php if($page == 'contact') echo "nav-item active"; else echo "nav-item"; ?>"><a class="nav-link" href="<?php echo WWW_ROOT; ?>/contact.php">Contact</a></li>
                 <li class="<?php if($page == 'in') echo "nav-item active"; else echo "nav-item"; ?>"><a class="nav-link" href="<?php echo WWW_ROOT; ?>/sign_in.php">Sign in</a></li>
                 <li class="<?php if($page == 'up') echo "nav-item active"; else echo "nav-item"; ?>"><a class="nav-link" href="<?php echo WWW_ROOT; ?>/sign_up.php">Sign up</a></li>
-                <li class="<?php if($page == 'dashboard') echo "nav-item active"; else echo "nav-item"; ?>"><a class="nav-link" href="<?php echo WWW_ROOT; ?>/admin">Dashboard</a></li>
-                <li class="<?php if($page == 'logout') echo "nav-item active"; else echo "nav-item"; ?>"><a class="nav-link" href="<?php echo WWW_ROOT; ?>/log_out.php">Log out</a></li>
               </ul>
             </div>
           </div>
         </nav>
-        <div class="container">
-        <div class="top_menu m0">
-            <div class="float-left">
-              <h2>Super Admin Controller</h2>
-            </div>
-            <div class="float-right">
-              <a class="dn_btn" href="<?php echo WWW_ROOT; ?>/admin/services/index.php">Services</a>
-              <a class="dn_btn" href="<?php echo WWW_ROOT; ?>/admin/services/index.php">Required Documents</a>
-              <a class="dn_btn" href="#">Requests</a>
-              <a class="dn_btn" href="#">Staff</a>
-            </div>
-          </div>
-        </div>
       </div>
     </header>

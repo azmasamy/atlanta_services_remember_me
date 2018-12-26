@@ -1,14 +1,18 @@
-
-<?php require_once('../../../private/initialize.php'); ?>
-<?php require_once(INCLUDES_PATH.'/admin_header.php'); ?>
+<?php
+$page = "dashboard";
+require_once('../../../private/initialize.php');
+require_header($page);
+deny_user_access();
+deny_client_access();
+?>
 <?php
 db_connect();
 $args['id'] = $_GET['id'];
-$cat = new Category($args);
+$doc = new RequiredDocuments($args);
 
-if($cat->delete())
+if($doc->delete())
 {
-  echo "Category deleted Successfully";
-  header("Location: index.php" );
+  echo "doument deleted Successfully";
+//  header("Location: index.php" );
 }
 ?>
