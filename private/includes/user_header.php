@@ -56,7 +56,7 @@
             </div>
             <div class="float-right">
               <a class="dn_btn" href="#">Services</a>
-              <a class="dn_btn" href="#">Required Documents</a>
+              <a class="dn_btn" href="<?php echo WWW_ROOT; ?>/admin/required_documents/index.php">Required Documents</a>
               <a class="dn_btn" href="#">Requests</a>
               <a class="dn_btn" href="#">Staff</a>
             </div>

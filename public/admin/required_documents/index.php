@@ -1,28 +1,30 @@
-<?php $selected = "cats";?>
+<?php $page = "dashboard";?>
+
 <?php require_once('../../../private/initialize.php'); ?>
-<?php require_once(INCLUDES_PATH.'/admin_header.php'); ?>
+<?php require_once('../../../private/includes/user_header.php'); ?>
 <div class="container">
-  <a href="new.php">New Category</a>
+  <a href="new.php">New Document</a>
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Photo</th>
-        <th scope="col">Operations</th>
+
+
+        <th scope="col">name</th>
+        <th scope="col">description</th>
+        <th scope="col">options</th>
       </tr>
       <?php
       //Get all categories from database
-      $cats = Category::find_all();
-      foreach ($cats as $cat) {
+      $documents = RequiredDocuments::find_all();
+      foreach ($documents as $doc) {
         echo "<tr>";
-        echo "<td>".$cat->getId()."</td>";
-        echo "<td>".$cat->getName()."</td>";
-        echo "<td>".$cat->getPhoto()."</td>";
+        
+        echo "<td>".$doc->getName()."</td>";
+        echo "<td>".$doc->getDescription()."</td>";
         echo "<td>"
-        ."<a href='view.php?id={$cat->getId()}'>". "View" ."</a>"
-        ."<a href='edit.php?id={$cat->getId()}'>". "  - Edit" ."</a>"
-        ."<a href='delete.php?id={$cat->getId()}' "
+
+        ."<a href='edit.php?id={$doc->getId()}'>". "   Edit" ."</a>"
+        ."<a href='delete.php?id={$doc->getId()}' "
         ."onclick='return confirm(\"Are you sure?\")' >". "  -  Delete" ."</a>"
         ."</td>";
         echo "</tr>";
@@ -41,5 +43,7 @@
           return confirm('Are you sure?');
       });
   </script>
+
 </body>
+
 </html>

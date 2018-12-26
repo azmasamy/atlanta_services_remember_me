@@ -2,7 +2,7 @@
 /**
 * Category Class
 */
-class Category
+class RequiredDocuments
 {
 
   // ACTIVE RECORD CODE TO KEEP EVERY CLASS KNOLWEDGE WITH DB
@@ -19,25 +19,25 @@ class Category
       exit("Database query failed.");
     }
     while ($record = $result->fetch_assoc()) {
-      $cat_array[] =  self::instantiate($record);
+      $doc_array[] =  self::instantiate($record);
     }
-    return $cat_array;
+    return $doc_array;
   }
 
   public function __construct($args=[])
   {
     $this->id = $args['id'] ?? '';
     $this->name = $args['name'] ?? '';
-    $this->photo = $args['photo'] ?? '';
+    $this->description = $args['description'] ?? '';
 
   }
   public function create()
   {
-    $sql  ="INSERT INTO Category(" ;
-      $sql .="name, photo";
+    $sql  ="INSERT INTO required_documents(" ;
+      $sql .="name, description";
       $sql .=" ) VALUES ( ";
-        $sql .="'" . $this->name ."',";
-        $sql .="'" . $this->photo ."'";
+        $sql .="'" . self::$database->escape_string($this->name) ."',";
+        $sql .="'" . self::$database->escape_string($this->description) ."'";
         $sql .=");";
 
         $result = self::$database->query($sql);
@@ -49,9 +49,9 @@ class Category
 
       public function update() {
         //print_r($this);
-        $sql  ="UPDATE Category SET " ;
-        $sql .=" name = '" . $this->name ."',";
-        $sql .=" photo ='" . $this->photo ."'";
+        $sql  ="UPDATE required_documents SET " ;
+        $sql .=" name = '" .self::$database->escape_string( $this->name) ."',";
+        $sql .=" description ='" . self::$database->escape_string($this->description) ."'";
         $sql .=" WHERE ";
         $sql .="id = ".$this->id ." ;";
 
@@ -68,9 +68,9 @@ class Category
 
       public function delete() {
         //print_r($this);
-        $sql  ="DELETE FROM Category" ;
+        $sql  ="DELETE FROM required_documents" ;
         $sql .=" WHERE ";
-        $sql .="id = ".$this->id ." ;";
+        $sql .="id = ".self::$database->escape_string($this->id) ." ;";
 
         $result = self::$database->query($sql);
         if($result){
@@ -84,17 +84,17 @@ class Category
 
       public function find_all()
       {
-        $sql = "SELECT * from category";
-        $cat_array = self::find_by_sql($sql);
+        $sql = "SELECT * from required_documents";
+        $doc_array = self::find_by_sql($sql);
 
-        return $cat_array;
+        return $doc_array;
       }
       public function find_by_id($id)
       {
-        $cat_array = [];
-        $sql = "SELECT * FROM category WHERE id = {$id}";
-        $cat_array = self::find_by_sql($sql);
-        return array_shift($cat_array);
+        $doc_array = [];
+        $sql = "SELECT * FROM required_documents WHERE id = {$id}";
+        $doc_array = self::find_by_sql($sql);
+        return array_shift($doc_array);
       }
 
       public function instantiate($value)
@@ -102,7 +102,7 @@ class Category
         $obj = new self();
         $obj->id = $value ['id'];
         $obj->name = $value ['name'];
-        $obj->photo = $value ['photo'];
+        $obj->description = $value ['description'];
 
         return $obj;
       }
@@ -142,12 +142,12 @@ class Category
         $this->name = $name;
       }
 
-      public function getPhoto(){
-        return $this->photo;
+      public function getDescription(){
+        return $this->description;
       }
 
-      public function setPhoto($photo){
-        $this->photo = $photo;
+      public function setDescription($description){
+        $this->description = $description;
       }
 
 

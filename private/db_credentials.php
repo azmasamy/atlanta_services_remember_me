@@ -4,9 +4,19 @@
 // 2. Unique credentials on development and production servers
 // 3. Unique credentials if working with multiple developers
 
-define("DB_SERVER", "localhost");
-define("DB_USER", "root");
-define("DB_PASS", "machine1");
-define("DB_NAME", "yomyshop");
 
+
+$pass = true ;
+if($pass = true){
+  define("DB_SERVER", "localhost");
+  define("DB_USER", "root");
+  define("DB_PASS", "");
+  define("DB_NAME", "atlanta_services");
+}
+else {
+  define("DB_SERVER", "localhost");
+  define("DB_USER", "root");
+  define("DB_PASS", "machine1");
+  define("DB_NAME", "atlanta_services");
+}
 ?>
