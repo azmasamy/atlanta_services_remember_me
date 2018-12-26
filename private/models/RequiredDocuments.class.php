@@ -14,6 +14,7 @@ class RequiredDocuments
 
   public function find_by_sql($sql)
   {
+    $doc_array = [];
     $result = self::$database->query($sql);
     if(!$result) {
       exit("Database query failed.");

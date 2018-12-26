@@ -41,56 +41,64 @@ require_once '../private/includes/user_header.php';
               echo "Welcom to our family <b>" . $user->getFullname() . "</b>";
               echo "<br>";
               echo "You can now make as many service requests as you want ;)";
-            }
-            else {
-              echo "There was an error, make sure that you enter your data correctly";
-            }
+              $session->login($user);
+              ?>
+              <script>
+              setTimeout(function(){
+                window.location.href = 'index.php';
+              }, 2000);
+            </script>
+            <?php
+          }
+          else {
+            echo "There was an error, make sure that you enter your data correctly";
           }
         }
-
-
       }
-      ?>
 
-    </div>
 
-    <form class="row contact_form" action="sign_up.php" method="post">
-      <div class="col-md-6">
-        <div class="form-group">
-          <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter first name">
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter last name">
-        </div>
-      </div>
-      <div class="col-md-12">
-        <div class="form-group">
-          <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address">
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <input type="password" class="form-control" id="password_check" name="password_check" placeholder="Enter password again">
-        </div>
-      </div>
-      <div class="col-md-12 text-right">
-        <button type="submit" value="create" class="btn submit_btn">Sign up</button>
-      </div>
-    </form>
+    }
+    ?>
 
   </div>
+
+  <form class="row contact_form" action="sign_up.php" method="post">
+    <div class="col-md-6">
+      <div class="form-group">
+        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter first name">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter last name">
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address">
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <input type="password" class="form-control" id="password_check" name="password_check" placeholder="Enter password again">
+      </div>
+    </div>
+    <div class="col-md-12 text-right">
+      <button type="submit" value="create" class="btn submit_btn">Sign up</button>
+    </div>
+  </form>
+
+</div>
 
 </section>
 <!--================End Services Area =================-->

@@ -7,6 +7,7 @@ deny_client_access();
 ?>
 <div class="container">
   <a href="new.php">New Document</a>
+  <br>
   <table class="table">
     <thead>
       <tr>
@@ -19,6 +20,8 @@ deny_client_access();
       <?php
       //Get all categories from database
       $documents = RequiredDocuments::find_all();
+      if(!empty($admins)) {
+
       foreach ($documents as $doc) {
         echo "<tr>";
 
@@ -33,6 +36,9 @@ deny_client_access();
         echo "</tr>";
         //print_r($cat);
       }
+    } else {
+      echo "No required documents to be shown";
+    }
 
 
       ?>

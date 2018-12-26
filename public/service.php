@@ -1,7 +1,9 @@
 <?php
 $page = 'service';
 require_once('../private/initialize.php');
-require_once('../private/includes/user_header.php');
+if(is_get_request()) {
+  require_header($page);
+}
 ?>
 <!--================Services Area =================-->
 
@@ -14,6 +16,8 @@ require_once('../private/includes/user_header.php');
     $counter = 0;
     $services_per_row = 3;
     $services = Service::find_all();
+    if(!empty($services)) {
+
     foreach ($services as $service ) {
       if($counter % $services_per_row == 0) {
         echo "<div class=\"row services_inner\">";
@@ -34,6 +38,9 @@ require_once('../private/includes/user_header.php');
        echo "</div>";
      }
   }
+} else {
+  echo "No services yet.";
+}
   ?>
 
   </div>

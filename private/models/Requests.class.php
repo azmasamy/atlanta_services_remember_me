@@ -10,7 +10,7 @@ class Requests
 
   public function find_by_sql($sql)
   {
-
+    $req_array = [];
     $result = self::$database->query($sql);
     if(!$result) {
       exit("Database query failed.");
