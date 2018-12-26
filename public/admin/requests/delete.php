@@ -1,4 +1,3 @@
-
 <?php
 $page = "dashboard";
 require_once('../../../private/initialize.php');
@@ -6,14 +5,15 @@ require_header($page);
 deny_user_access();
 deny_client_access();
 ?>
-<?php
+
+<?phps
 db_connect();
 $args['id'] = $_GET['id'];
-$meal = new MenuItem($args);
+$req = new Requests($args);
 
-if($meal->delete())
+if($req->delete())
 {
-  echo "Meal deleted Successfully";
+  echo "Requste deleted Successfully";
   header("Location: index.php" );
 }
 ?>

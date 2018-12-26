@@ -18,6 +18,8 @@ require_once("models/Users.class.php");
 require_once("models/Session.class.php");
 require_once("models/Services.class.php");
 require_once("models/RequiredDocuments.class.php");
+require_once("models/Requests.class.php");
+require_once("models/UserDocuments.class.php");
 
 $session = new Session();
 
@@ -28,6 +30,8 @@ $db = db_connect();
 RequiredDocuments::set_database($db);
 User::set_database($db);
 Service::set_database($db);
+Requests::set_database($db);
+UserDocuments::set_database($db);
 
 
 

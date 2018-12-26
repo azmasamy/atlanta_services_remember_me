@@ -4,8 +4,8 @@
 // 2. Unique credentials on development and production servers
 // 3. Unique credentials if working with multiple developers
 
-$pass = true ;
-if($pass = true){
+$pass = false ;
+if($pass == true){
   define("DB_SERVER", "localhost");
   define("DB_USER", "root");
   define("DB_PASS", "");

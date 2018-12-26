@@ -3,7 +3,6 @@
 $page = 'home';
 require_once('../private/initialize.php');
 require_header($page);
-
 ?>
 
 <!--================Home Banner Area =================-->
