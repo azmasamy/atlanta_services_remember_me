@@ -10,27 +10,24 @@ define("PROJECT_PATH", dirname(PRIVATE_PATH));
 define("PUBLIC_PATH", PROJECT_PATH . '/public');
 define("IMAGES_PATH", PROJECT_PATH . '/public/img');
 define("INCLUDES_PATH", PRIVATE_PATH . '/includes');
-define("LOGIN_WWW_PATH", WWW_ROOT . "/admin/login.php");
-define("MEALS_WWW_PATH", WWW_ROOT . "/meals.php");
 define("CURRENT_WWW_PATH", $_SERVER['SCRIPT_NAME']);
 
-
-//require_once("models/MenuItem.class.php");
-require_once("database_functions.php");
-//require_once("models/Category.class.php");
 require_once("functions.php");
-//require_once("models/Admin.class.php");
-//require_once("models/Session.class.php");
+require_once("database_functions.php");
+require_once("models/Users.class.php");
+require_once("models/Session.class.php");
+//require_once("models/MenuItem.class.php");
+//require_once("models/Category.class.php");
 
-//$session = new Session();
+$session = new Session();
 
 //if(!$session->is_logged_in() && CURRENT_WWW_PATH != LOGIN_WWW_PATH && CURRENT_WWW_PATH != MEALS_WWW_PATH)
 //redirect_to(WWW_ROOT.'/admin/login.php');
 
-//$db = db_connect();
+$db = db_connect();
 //Category::set_database($db);
 //MenuItem::set_database($db);
-//Admin::set_database($db);
+User::set_database($db);
 
 
 ?>
