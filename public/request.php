@@ -1,16 +1,15 @@
-
 <?php
 $page = 'service';
 require_once('../private/initialize.php');
 require_header($page);
 deny_user_access();
 ?>
-
-
-
 <div class="container">
 
   <?php
+  $user_id=($_SESSION['user_id']);
+  //print_r($user_id);
+
   //this code to save data from html inside file
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $target_dir = "../../img/";
@@ -31,13 +30,36 @@ deny_user_access();
 
     $name = basename( $_FILES["fileToUpload"]["name"]); // this function to give the photo the unreal name
     $args['name'] = $name;
-print_r($args);
+    $args['user_id'] = $user_id;
+
+    $request_args['user_id'] = $user_id;
+    $request_args['service_id'] = $_POST['user_id'];
+    $request_args['status'] = 'In Progress';
+
+    // $user = User::find_by_id($user_id);
+    // print_r($args);
     $docu = new UserDocuments($args);
-    if($docu->create())
-    echo "Requset Created Successfully";
-    else
-    echo "Not created";
+    $request = new Requests($request_args);
+    //print_r($request);
+
+    if($docu->create()) {
+      echo '<br>';
+      echo "Documents Added Successfully";
+      echo '<br>';
+      if($request->create()) {
+      echo "Requset Created Successfully";
+      echo '<br>';
+}
+      else
+      echo "Request Not created";
+      echo '<br>';
+      die("");
+
+    } else
+    echo "Not Added";
     die("");
+
+
   }
   ?>
 
@@ -46,13 +68,14 @@ print_r($args);
       <div class="form-group col-lg-4 ">
         <label for="code">Image</label>
         <input type="file" name="fileToUpload" id="fileToUpload">
+        <input type="hidden" name="user_id" id="user_id" value=" <?php echo $_GET['id']; ?>">
       </div>
     </div>
     <div class="row">
       <div class="form-group col-lg-1 ">
         <input class="btn btn-primary"  type="submit" name="submit" value="Add">
-        </div>
-       </div>
-     </div>
-   </form>
- </div>
+      </div>
+    </div>
+  </div>
+</form>
+</div>

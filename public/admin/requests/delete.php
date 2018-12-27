@@ -6,7 +6,7 @@ deny_user_access();
 deny_client_access();
 ?>
 
-<?phps
+<?php
 db_connect();
 $args['id'] = $_GET['id'];
 $req = new Requests($args);

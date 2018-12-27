@@ -13,57 +13,58 @@ deny_client_access();
     $target_dir = "../../img/icon/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 
+          $name = $_POST['name'];
+          $description = $_POST['description'];
+          $price = $_POST['price'];
+          $img = basename( $_FILES["fileToUpload"]["name"]);
 
-    $imageInformation = getimagesize($_FILES['fileToUpload']['tmp_name']);
-    $imageWidth = $imageInformation[0];
-    $imageHeight = $imageInformation[1];
-if($imageWidth == 90 && $imageHeight == 90)
-{
-  if(isset($_POST["submit"])) {
-    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-      echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+          $args['name'] = $name;
+          $args['description'] = $description;
+          $args['price'] = $price;
+          $args['icon'] = $img;
+          $service = new Service($args);
+
+    if(empty($name) || empty($description) || empty($price) || empty($imageInformation) && trim($name) == '' && trim($description) == '' && trim($price) == '' && trim($imageInformation) == '')
+    {
+      echo "<br>";
+       echo "You did not fill out all the required fields.";
+       echo "<br>";
+       echo "Service Not Created";
+       die("");
     } else {
-      echo "Sorry, there was an error uploading your file.";
+      $imageInformation = getimagesize($_FILES['fileToUpload']['tmp_name']);
+      $imageWidth = $imageInformation[0];
+      $imageHeight = $imageInformation[1];
+  if($imageWidth == 90 && $imageHeight == 90)
+  {
+    if(isset($_POST["submit"])) {
+      if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+      } else {
+        echo "Sorry, there was an error uploading your file.";
+      }
     }
   }
-}
-else{
-  echo "The photo is not in the correct size (90 * 90)";
-  echo "<br>";
-  echo "Service Not Created";
-  exit();
-}
+  else{
+    echo "The photo is not in the correct size (90 * 90)";
+    echo "<br>";
+    echo "Service Not Created";
+    exit();
+  }
+
+    if($service->create())
+    echo "Service Created Successfully";
+    else
+    echo "Not created";
+    die("");
+  }
+
 
 
 
   // Check if image file is a actual image or fake image
 
-      $name = $_POST['name'];
-      $description = $_POST['description'];
-      $price = $_POST['price'];
-      $img = basename( $_FILES["fileToUpload"]["name"]);
 
-      $args['name'] = $name;
-      $args['description'] = $description;
-      $args['price'] = $price;
-      $args['icon'] = $img;
-      $service = new Service($args);
-
-      if(empty($name) || empty($description) || empty($price) || empty($imageInformation) && trim($name) == '' && trim($description) == '' && trim($price) == '' && trim($imageInformation) == '')
-      {
-        echo "<br>";
-         echo "You did not fill out all the required fields.";
-         echo "<br>";
-         echo "Service Not Created";
-         die("");
-      } else {
-
-      if($service->create())
-      echo "Service Created Successfully";
-      else
-      echo "Not created";
-      die("");
-    }
     }
 
     ?>
