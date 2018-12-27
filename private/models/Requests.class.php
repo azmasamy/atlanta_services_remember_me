@@ -8,6 +8,19 @@ class Requests
     self::$database = $database;
   }
 
+  public function create()
+  {
+    $sql = "INSERT INTO request (user_id, service_id, status) VALUES ('$this->user_id', '$this->service_id', '$this->status')";
+    echo "<br>";
+    echo $sql;
+
+    $result = self::$database->query($sql);
+    if($result){
+      $this->id = self::$database->insert_id;
+    }
+    return $result;
+  }
+
   public function find_by_sql($sql)
   {
     $req_array = [];
@@ -94,7 +107,15 @@ class Requests
 
   }
 
+  public function find_by_userid($user_id)
+  {
+    $req_array = [];
+    $sql = "SELECT * FROM request WHERE user_id = {$user_id}";
+    $req_array = self::find_by_sql($sql);
+    return array_shift($req_array);
 
+
+  }
 
   public function instantiate($value)
   {
