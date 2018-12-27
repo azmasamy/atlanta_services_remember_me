@@ -7,18 +7,15 @@ class UserDocuments
   }
   public function find_by_sql($sql)
   {
-    $req_array = [];
+    $doc_array = [];
     $result = self::$database->query($sql);
     if(!$result) {
       exit("Database query failed.");
     }
-    print_r($result->fetch_assoc());
     while ($record = $result->fetch_assoc()) {
-      $req_array[] =  self::instantiate($record); // this function to convert array to object
-      print_r($record);
-      echo "hazzzz";
+      $doc_array[] =  self::instantiate($record); // this function to convert array to object
     }
-    return $req_array;
+    return $doc_array;
   }
 
 
@@ -26,19 +23,20 @@ class UserDocuments
   public function __construct($args=[])
   {
     $this->id = $args['id'] ?? '';
-    $this->name = $args['name	'] ?? '';
+    $this->name = $args['name'] ?? '';
     $this->user_id = $args['user_id'] ?? '';
 
   }
 
   public function create()
   {
-    $sql  ="INSERT INTO user_documents(" ;
-    $sql .="name";
-    $sql .=" ) VALUES ( ";
-    $sql .="'" . $this->name ."'";
+    $sql = "INSERT INTO user_documents (name, user_id) VALUES ('$this->name', '$this->user_id')";
 
-    $sql .=");";
+    // $sql  ="INSERT INTO user_documents(" ;
+    // $sql .="name";
+    // $sql .=" ) VALUES ( ";
+    // $sql .="'" . $this->name ."'";
+    // $sql .=");";
 
     $result = self::$database->query($sql);
     if($result){
@@ -51,10 +49,10 @@ class UserDocuments
 
       public function find_by_id($id)
       {
-        $req_array = [];
-        $sql = "SELECT * FROM user_documents WHERE id = {$id}";
-        $req_array = self::find_by_sql($sql);
-        return $req_array;
+        $doc_array = [];
+        $sql = "SELECT * FROM user_documents WHERE user_id = {$id}";
+        $doc_array = self::find_by_sql($sql);
+        return $doc_array;
 
       }
 

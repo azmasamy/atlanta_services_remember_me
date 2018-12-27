@@ -24,7 +24,7 @@ if(is_get_request()) {
       }
       ?>
 
-      <a href='request.php?id=<?php $service->getId(); ?>'> <div class="col-lg-4">
+      <a href='request.php?id=<?php echo $service->getId(); ?>'> <div class="col-lg-4">
           <div class="services_item">
             <img src="img/icon/<?php echo $service->getIcon(); ?>" alt="">
             <a><h4> <?php echo $service->getName(); ?> </h4></a>

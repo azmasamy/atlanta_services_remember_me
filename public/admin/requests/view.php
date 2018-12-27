@@ -9,13 +9,11 @@ deny_client_access();
 <section class="services_area p_120">
   <div class="container">
     <div class="main_title">
-      <h2>View Request</h2>
       <?php
       $req = Requests::find_by_id($_GET['id']);
       $user = User::find_by_id($req->getUser_id());
       $service = Service::find_by_id($req->getService_id());
       $doc_array = UserDocuments::find_by_id($user->getId());
-      print_r($doc_array);
 
       ?>
     </div>
@@ -27,12 +25,18 @@ deny_client_access();
     echo "<h3> <b> User name: </b> {$user->getUsername()} </h3>";
     echo "<h3> <b> Service: </b> {$service->getName()} </h3>";
 
-    if(!empty($doc_array))
-  foreach ($doc_array as $doc) {
-    echo "<h3> <b> Documents: </b> {$doc_array->getName()} </h3>";
-  } else {
-    echo "<h3> <b> No Documents for this request </h3>";
-  }
+    if(!empty($doc_array)) {
+      echo "<h3> <b> Documents: </b>" . "<br>(";
+      $lastElement = end($doc_array);
+      foreach ($doc_array as $doc) {
+        if(!($lastElement === $doc)) {
+          echo $doc->getName() . " - ";
+        }
+      }
+      echo ")</h3>";
+    } else {
+      echo "<h3> <b> No Documents for this request </h3>";
+    }
 
 
     ?>
@@ -40,10 +44,10 @@ deny_client_access();
 </section>
 <table>
 
-<!--
+  <!--
   <img src="<php echo PUBLIC_PATH ."/img/users_documents/smiley.gif";  ?> " alt="Smiley face" width="42" height="42"> -->
 
-  </table>
+</table>
 </div>
 </body>
 </html>
