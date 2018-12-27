@@ -29,6 +29,7 @@ if(is_get_request()) {
             <img src="img/icon/<?php echo $service->getIcon(); ?>" alt="">
             <a><h4> <?php echo $service->getName(); ?> </h4></a>
             <p><?php echo $service->getDescription(); ?></p>
+            <p><?php echo "$" . $service->getPrice(); ?></p>
           </div>
       </div>
 
