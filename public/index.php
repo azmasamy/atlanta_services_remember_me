@@ -11,8 +11,8 @@ require_header($page);
     <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
     <div class="container">
       <div class="banner_content text-center">
-        <h3>Choose <span>Yours</span></h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp or incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
+        <h3>Made to <span>SERVE</span></h3>
+        <p></p>
       </div>
     </div>
   </div>
@@ -34,7 +34,7 @@ if(count($services) == 3){
     <div class="container">
       <div class="main_title">
         <h2>Services</h2>
-        <p>All You Need Is HERE</p>
+        <p>All What You Need Is HERE</p>
       </div>
 
       <?php

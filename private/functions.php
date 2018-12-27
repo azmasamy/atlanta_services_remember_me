@@ -32,19 +32,19 @@ function require_header($page) {
 
 function deny_user_access() {
   if(!isset($_SESSION['user_id'])) {
-    header("Location: " . PUBLIC_PATH . 'index.php');
+    header("Location: " . PROJECT_PATH . '/index.php');
   }
 }
 
 function deny_client_access() {
   if(isset($_SESSION['user_id']) && $_SESSION['is_admin'] == 0 && $_SESSION['is_super'] == 0) {
-    header("Location: " . PUBLIC_PATH . 'index.php');
+    header("Location: " . PROJECT_PATH . '/index.php');
   }
 }
 
 function deny_admin_access() {
   if(isset($_SESSION['user_id']) && $_SESSION['is_admin'] == 1 && $_SESSION['is_super'] == 0) {
-    header("Location: " . PUBLIC_PATH . '/admin/index.php');
+    header("Location: " . PROJECT_PATH . '/admin/index.php');
   }
 }
 
