@@ -5,6 +5,11 @@ require_header($page);
 deny_user_access();
 deny_client_access();
 ?>
+<section class="services_area p_120">
+  <div class="container">
+    <div class="main_title">
+      <h2>Required Documents</h2>
+    </div>
 <div class="container">
   <a href="new.php">New Document</a>
   <br>
@@ -53,5 +58,5 @@ deny_client_access();
   </script>
 
 </body>
-
+</section>
 </html>

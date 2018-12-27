@@ -5,9 +5,6 @@ require_once('../private/initialize.php');
 require_header($page);
 deny_user_access();
 ?>
-
-
-
 <div class="container">
 
   <?php
