@@ -34,7 +34,7 @@ if(count($services) == 3){
     <div class="container">
       <div class="main_title">
         <h2>Services</h2>
-        <p>All What You Need Is HERE</p>
+        <p>Sample of our services</p>
       </div>
 
       <?php
@@ -64,18 +64,29 @@ if(count($services) == 3){
       }
 
       ?>
+      <?php
+      if(count($services) == 3){
+        ?>
 
-    </div>
+        <br>
+        <br>
+        <center>
+          <a class="black_btn" href="service.php">More Services</a>
+        </center>
+
+      <?php } ?>
+
+      </div>
 
 
 
-  </section>
-  <!--================End Services Area =================-->
+    </section>
+    <!--================End Services Area =================-->
 
-  <?php
-  require_once '../private/includes/footer.php';
-  require_once '../private/includes/js_tags.php';
-  ?>
+    <?php
+    require_once '../private/includes/footer.php';
+    require_once '../private/includes/js_tags.php';
+    ?>
 
-</body>
-</html>
+  </body>
+  </html>
