@@ -1,6 +1,10 @@
-<?php  $page = 'profile';?>
-<?php require_once('../../private/initialize.php'); ?>
-<?php require_once('../../private/includes/user_header.php'); ?>
+<?php
+$page = 'profile';
+require_once('../../private/initialize.php');
+require_header($page);
+deny_user_access();
+?>
+
 <div class="container">
     <div class="main_title">
       <h2>welcome to your profile</h2>
