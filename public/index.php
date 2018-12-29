@@ -2,6 +2,10 @@
 <?php
 $page = 'home';
 require_once('../private/initialize.php');
+$user = eat_login_cookie();
+if($user) {
+  $session->login($user);
+};
 require_header($page);
 ?>
 

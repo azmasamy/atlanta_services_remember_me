@@ -103,6 +103,24 @@ class User {
             return array_shift($cat_array);
           }
 
+          public function find_by_cookie($session_id) {
+            $sql = "SELECT * FROM users WHERE session_id = '{$session_id}';";
+            $result = self::$database->query($sql);
+            while ($record = $result->fetch_assoc()) {
+              $admins_array[] =  self::instantiate($record);
+            }
+            return array_shift($admins_array);
+          }
+
+          public function update_session_id($session_id) {
+            $sql  = "UPDATE users SET " ;
+            $sql .=" session_id = '" . $session_id ."'";
+            $sql .=" WHERE ";
+            $sql .="id = ".$this->id ." ;";
+            $result = self::$database->query($sql);
+            return $result;
+          }
+
           public function instantiate($value){
             $obj = new self();
             $obj->id = $value ['id'];

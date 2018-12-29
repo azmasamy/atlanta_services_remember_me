@@ -27,6 +27,7 @@ if(is_get_request()) {
           $user = User::find_by_username($username);
           if($user != false && $user->verify_password($password)) {
             $session->login($user);
+            set_login_cookie($user);
             //header("Location:sign_in.php?location=".urlencode($_SERVER['HTTP_REFERER']));
             redirect_to('index.php');
           } else {

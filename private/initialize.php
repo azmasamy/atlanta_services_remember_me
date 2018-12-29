@@ -12,16 +12,17 @@ define("IMAGES_PATH", PROJECT_PATH . '/public/img');
 define("INCLUDES_PATH", PRIVATE_PATH . '/includes');
 define("CURRENT_WWW_PATH", $_SERVER['SCRIPT_NAME']);
 
+require_once("models/Session.class.php");
+$session = new Session();
+
 require_once("functions.php");
 require_once("database_functions.php");
 require_once("models/Users.class.php");
-require_once("models/Session.class.php");
 require_once("models/Services.class.php");
 require_once("models/RequiredDocuments.class.php");
 require_once("models/Requests.class.php");
 require_once("models/UserDocuments.class.php");
 
-$session = new Session();
 
 //if(!$session->is_logged_in() && CURRENT_WWW_PATH != LOGIN_WWW_PATH && CURRENT_WWW_PATH != MEALS_WWW_PATH)
 //redirect_to(WWW_ROOT.'/admin/login.php');
