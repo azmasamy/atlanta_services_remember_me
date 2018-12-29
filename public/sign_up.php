@@ -1,6 +1,10 @@
 <?php
 $page = 'up';
 require_once('../private/initialize.php');
+$user = eat_login_cookie();
+if($user) {
+  $session->login($user);
+};
 require_once '../private/includes/user_header.php';
 ?>
 

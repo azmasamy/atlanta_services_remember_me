@@ -1,7 +1,10 @@
 <?php
 $page = 'in';
 require_once('../private/initialize.php');
-
+$user = eat_login_cookie();
+if($user) {
+  $session->login($user);
+};
 if(is_get_request()) {
   require_header($page);
 }
